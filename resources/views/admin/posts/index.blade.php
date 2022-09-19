@@ -18,7 +18,7 @@
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
-                        <td><a href="#">{{$post->id}}</a></th>
+                        <td><a href="{{route('admin.posts.show', $post->id)}}">{{$post->id}}</a></th>
                         <td>{{$post->author}}</td>
                         <td colspan="2">{{$post->title}}</td>
                         <td>{{$post->post_date}}</td>
