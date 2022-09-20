@@ -73,8 +73,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $post = POST::find($id);
+        return view('admin.posts.edit', compact('post'));    }
 
     /**
      * Update the specified resource in storage.
@@ -86,6 +86,12 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->validate($this->validationArray);
+        $post = POST::find($id);
+        $data['author'] = $post->author;
+        $data['post_date'] = $post->post_date;
+        $post->update($data);
+        return redirect()->route('admin.posts.index');
     }
 
     /**

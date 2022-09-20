@@ -12,10 +12,13 @@
                 <img class="card-img-top" src="{{$post->post_image}}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">{{$post->title}}</h5>
-                  <p class="card-text">{{$post->post_content}}</div>
+                  <p class="card-text">{{$post->post_content}}</p>
+                  </div>
                 <div class="card-footer">
-                  <small class="text-muted">{{$post->post_date}}</small>
+                  <small class="text-muted"> <p>Published by: {{$post->author}} on the: {{$post->post_date}}</p></small>
+                  <a href="{{route('admin.posts.index')}}" class="btn btn-primary btn-sm w-50">Back to Index</a>
                 </div>
+              
               </div>
         </div>
     </div>

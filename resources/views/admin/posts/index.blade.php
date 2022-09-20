@@ -23,7 +23,7 @@
                         <td colspan="2">{{$post->title}}</td>
                         <td>{{$post->post_date}}</td>
                         <td>
-                            <a href="#">
+                            <a href="{{route('admin.posts.edit',  $post->id)}}">
                                 <button type="button" class="btn btn-success">Edit</button>
                             </a>
                         </td>
