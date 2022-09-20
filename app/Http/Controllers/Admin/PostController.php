@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
-{
+{ protected $validationArray = [
+    'title' => 'required|string|max:255',
+    'post_content' => 'required|string',
+    'post_image' => 'required|active_url',
+];
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +32,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $post = new Post();
+        return view('admin.posts.create', compact('post'));
     }
 
     /**
@@ -37,7 +44,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate($this->validationArray);
+        $post = new Post();
+        $data['author'] = Auth::user()->name;
+        $data['post_date'] = new DateTime();
+        $post->create($data);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
