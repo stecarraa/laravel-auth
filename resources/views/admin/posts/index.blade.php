@@ -13,6 +13,7 @@
                     <th scope="col">Post Date</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Show</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +25,7 @@
                         <td>{{$post->post_date}}</td>
                         <td>
                             <a href="{{route('admin.posts.edit',  $post->id)}}">
-                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-sm btn-success">Edit</button>
                             </a>
                         </td>
                         <td>
@@ -33,6 +34,11 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
+                        </td>
+                        <td>
+                            <a href="{{route('admin.posts.show',  $post->id)}}">
+                                <button type="button" class="btn btn-sm btn-primary">Show Post</button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
